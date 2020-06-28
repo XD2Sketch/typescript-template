@@ -1,0 +1,61 @@
+{
+  "name": "@xd2sketch/typescript-template",
+  "version": "1.0.0",
+  "description": "Template for TypeScript apps",
+  "main": "dist/public_api.js",
+  "typings": "dist/public_api.d.ts",
+  "repository": "https://github.com/XD2Sketch/typescript-template",
+  "author": "HaveALookUG",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint .",
+    "test": "jest",
+    "prebuild": "rimraf ./dist",
+    "release": "standard-version",
+    "prepublishOnly": "yarn build",
+    "postrelease": "git push --follow-tags --no-verify"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-push": "branch-name-lint"
+    }
+  },
+  "branchNameLinter": {
+    "prefixes": [
+      "feature",
+      "fix",
+      "chore"
+    ],
+    "suggestions": {
+      "feat": "feature",
+      "features": "feature",
+      "hotfix": "fix"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^9.1.2",
+    "@commitlint/config-conventional": "^9.1.2",
+    "@types/fs-extra": "^9.0.1",
+    "@types/jest": "^26.0.4",
+    "@types/rimraf": "^3.0.0",
+    "@typescript-eslint/eslint-plugin": "^3.6.1",
+    "@typescript-eslint/parser": "^3.6.1",
+    "branch-name-lint": "^1.4.0",
+    "eslint": "^7.4.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "husky": "^4.2.5",
+    "jest": "^26.1.0",
+    "jest-circus": "^26.1.0",
+    "rimraf": "^3.0.2",
+    "standard-version": "^8.0.2",
+    "ts-jest": "^26.1.3",
+    "typescript": "^3.9.7"
+  },
+  "engines": {
+    "node": "^12.16.0 || ^14"
+  }
+}

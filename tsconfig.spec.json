@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "typescript-template": ["./src/public_api.ts"],
+      "typescript-template/*": ["./src/*"]
+    }
+  },
+  "include": [
+    "__tests__/**/*.ts"
+  ]
+}

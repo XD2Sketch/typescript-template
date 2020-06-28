@@ -1,0 +1,5 @@
+/**
+ * Package entrypoint
+ */
+
+export default {};

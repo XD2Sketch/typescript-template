@@ -1,0 +1,23 @@
+name: Node.js Package
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  publish-gpr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: 'https://npm.pkg.github.com'
+      - name: Install dependencies
+        run: yarn install --frozen-lock-file
+      - name: Publish to GH registry
+        run: yarn publish
+        env:
+          NPM_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NPM_REGISTRY_URL: 'https://npm.pkg.github.com'
